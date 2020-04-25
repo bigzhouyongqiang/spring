@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 声明java对象交给Spring 创建和管理
+        class: 类的全限定名称，不能是接口（Spring 使用的是反射创建对象）
+        id: 自定义的对象名称，要求是唯一值，表示在Spring中的对象名称，
+            通过这个名称可以从Spring中找到对象，获取对象
+
+        对象是放入到Spring的容器（Map<id,对象>）
+        private final Map<String, Object> factoryBeanObjectCache = new ConcurrentHashMap<String, Object>(16);
+    -->
+
+    <bean id="someService"
+          class="com.zhouyq.spring.service.impl.SomeServiceImpl"/>
+
+    <bean id="someService1"
+              class="com.zhouyq.spring.service.impl.SomeServiceImpl"/>
+
+    <!--
+        bean对象的作用域： 作用域是对象存在的范围和可见性
+         1. singleton（默认作用域）: 单例作用域。即在整个Spring容器中，使用singleton定义的Bean是单例的(**叫这个名称的对象只有一个实例，并不是此类只能创建一个对象**)
+            语法： <bean id="XXXX" class="XXXXX" scope="singleton"/ >
+         2. prototype: 原型模式。即每次使用getBean()方法获取的同一个<bean/> 的实例都是一个新的实例
+            语法： <bean id="XXXX" class="XXXXX" scope="prototype"/ >
+         3. request: 对于每次http请求，都将会产生一个不同的Bean实例
+            语法： <bean id="XXXX" class="XXXXX" scope="request"/ >
+         4. session: 对于每次不同的HttpSession,都将产生一个不同的Bean实例
+            语法： <bean id="XXXX" class="XXXXX" scope="session"/ >
+
+            request和session在web环境中使用
+     -->
+    <!--singleton（默认作用域） -->
+    <bean id="someService_singleton"
+          class="com.zhouyq.spring.service.impl.SomeServiceImpl" scope="singleton"/>
+    <!--prototype（原型模式） -->
+    <bean id="someService_prototype"
+          class="com.zhouyq.spring.service.impl.SomeServiceImpl" scope="prototype"/>
+
+
+</beans>
