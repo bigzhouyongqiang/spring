@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 声明Student对象 -->
+    <!--
+       DI
+     -->
+    <!--
+        di: 依赖注入，给属性赋值
+        di:  两个实现方式
+                1. 使用XML中的标签和属性
+                2. 使用注解
+        di的分类:
+                1. 设值注入： 就是调用类的set方法，完成赋值，最常用方法
+                2. 构造注入：Spring 调用类的有参构造方法，完成属性赋值
+
+         简单类型：Spring中把String 和java的基本数据类型叫做简单类型
+        1. 设值注入： Spring 调用类的set方法，在set方法中完成赋值
+            - 简单类型的设值注入：<property name="属性名" value="简单类型的属性值"/>
+               ```xml
+                    <bean id="XXXX" class="XXXXXX" >
+                        <property name="属性名称" value="属性值" />
+                    </bean>
+               ```
+     -->
+    <bean id="mystudent" class="com.zhouyq.spring.ba01.Student" >
+        <property name="name" value="zhouyq" /><!--setName("zhouyq")-->
+        <property name="age" value="23"/><!--setAge(23)-->
+    </bean>
+
+
+</beans>
