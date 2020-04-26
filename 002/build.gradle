@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.zhouyq.spring'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile (
+            // spring 的依赖
+            'org.springframework:spring-context:4.3.16.RELEASE'
+    )
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

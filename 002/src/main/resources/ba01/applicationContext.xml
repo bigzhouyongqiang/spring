@@ -24,10 +24,48 @@
                         <property name="属性名称" value="属性值" />
                     </bean>
                ```
+            - 引用类型的设值注入（两种方式）： 使用ref赋值
+                  1. ref 作为属性(常用)
+                       ```xml
+                            <bean id="XXXX" class="XXXXXX" >
+                                <property name="属性名称" ref="bean的id" />
+                            </bean>
+                       ```
+                  2. ref作为子标签
+                       ```xml
+                            <bean id="XXXX" class="XXXXXX" >
+                                <property name="属性名称" ref="bean的id">
+                                    <ref bean="bean的id" />
+                                </property>
+                            </bean>
+                       ```
      -->
+    <!-- 设值注入： 简单类型属性赋值 -->
     <bean id="mystudent" class="com.zhouyq.spring.ba01.Student" >
         <property name="name" value="zhouyq" /><!--setName("zhouyq")-->
         <property name="age" value="23"/><!--setAge(23)-->
+    </bean>
+
+
+    <!-- 设值注入： 引用类型属性赋值，ref作为属性 -->
+    <bean id="mystudent02" class="com.zhouyq.spring.ba02.Student" >
+        <property name="name" value="zhouyq" /><!--setName("zhouyq")-->
+        <property name="age" value="23"/><!--setAge(23)-->
+        <property name="school" ref="school"/>
+    </bean>
+
+    <!-- 设值注入： 引用类型属性赋值，ref作为子标签 -->
+    <bean id="mystudent03" class="com.zhouyq.spring.ba02.Student" >
+        <property name="name" value="zhouyq" /><!--setName("zhouyq")-->
+        <property name="age" value="23"/><!--setAge(23)-->
+        <property name="school">
+            <ref bean="school"/>
+        </property>
+    </bean>
+
+    <bean id="school" class="com.zhouyq.spring.ba02.School" >
+        <property name="name" value="高级中学" /><!--setName("zhouyq")-->
+        <property name="address" value="西安市科技路西口"/><!--setAge(23)-->
     </bean>
 
 
